@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block head%}
+
+{{ super() }}
+<style>
+    html,
+    body {
+        background-image:
+            url(https://www.netclipart.com/pp/m/374-3744503_dog-paw-cat-clip-art-cat-paw-print.png);
+        background-size: cover;
+        background-repeat: repeat-y;
+        background-position: center;
+        height: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block title %} Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2> Welcome {{user.username}}!</h2>
+
+
+
+</div>
+{% endblock %}

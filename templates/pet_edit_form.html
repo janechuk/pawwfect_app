@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block head%}
+{{ super() }}
+<style>
+    html,
+    body {
+        background-image: url(https://i.pinimg.com/originals/34/5a/50/345a50d9a43718c9e29f09b4c725bc41.jpg);
+        background-size: cover;
+        background-repeat: repeat-y;
+        background-position: center;
+        height: 100%;
+    }
+</style>
+{% endblock %}
+{% block title %} Edit Pet {% endblock %}
+{% block content %}
+
+<h1>{{ pet.name }}</h1>
+
+{% if pet.photo_url %}
+
+
+<div class="col mb-4">
+    <div>
+        <img class="img-fluid" src=" {{ pet.photo_url }}" style="height: 400px;" class="card-img-top" alt="...">
+    </div>
+</div>
+{% endif %}
+
+<h2>Update</h2>
+
+<form method="POST">
+    {% include "_form.html" %}
+    <button class="btn btn-primary" type="submit">Update</button>
+</form>
+
+{% endblock %}

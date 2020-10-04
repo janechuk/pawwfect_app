@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block head%}
+{{ super() }}
+<style>
+    html,
+    body {
+        background-image: url(https://as1.ftcdn.net/jpg/01/02/44/94/500_F_102449469_bZlNWnrtrK2p69U4SVR1GWzRz9ovTM7u.jpg);
+        background-size: cover;
+        background-repeat: repeat-y;
+        background-position: center;
+        height: 100%;
+    }
+</style>
+{% endblock %}
+
+{% block title %} PawwNews {% endblock %}
+{% block content %}
+
+<h1>PawwNews</h1>
+
+<hr>
+
+<div class="row row-cols-1 row-cols-md-2">
+    {% for tit, desc, i , url in context %}
+    <div class="col mb-4">
+        <div class="card h-100">
+            <img src="{{i}}" style="height: 250px;" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><a href="{{url}}" target="_blank" class="card-link">{{tit}}</a></h5>
+                <p class="card-text">{{desc}}
+                <h6><a href="{{url}}" target="_blank"> Read More</a></h6>
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block head%}
+{{ super() }}
+
+<style>
+    html,
+    body {
+        background-image: url(https://i.pinimg.com/originals/34/5a/50/345a50d9a43718c9e29f09b4c725bc41.jpg);
+        background-size: cover;
+        background-repeat: repeat-y;
+        background-position: center;
+        height: 100%;
+    }
+</style>
+
+{% endblock %}
+
+{% block title %} Create User {% endblock %}
+
+{% block content %}
+
+<h1>Signup</h1>
+
+<form method="POST">
+
+    {{form.hidden_tag()}}
+
+    {% for field in form.errors %}
+    <div class="alert alert-danger">{{ field }}:
+        <ul>
+            {% for error in form.errors[field] %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+
+    {% for field in form if field.widget.input_type != 'hidden' %}
+
+    <div class="form-group row">
+        {{field.label(class="col-sm-2 col-form-label")}}
+        <div class="col-sm-10">
+            {{field(class="form-control")}}
+        </div>
+    </div>
+
+    {% endfor %}
+
+    <button class="btn btn-primary">Sign up!</button>
+</form>
+
+{% endblock %}

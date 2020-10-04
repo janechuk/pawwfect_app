@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block head%}
+{{ super() }}
+
+<style>
+    html,
+    body {
+        background-image: url(https://www.netclipart.com/pp/m/374-3744503_dog-paw-cat-clip-art-cat-paw-print.png);
+        background-size: cover;
+        background-repeat: repeat-y;
+        background-position: center;
+        height: 100%;
+    }
+</style>
+
+{% endblock %}
+
+{% block title %} Login {% endblock %}
+
+{% block content %}
+
+<h1>Login </h1>
+<form method="POST">
+
+    {{form.hidden_tag()}}
+
+    {% for field in form.errors %}
+    <div class="alert alert-danger">{{ field }}:
+        <ul>
+            {% for error in form.errors[field] %}
+            <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+
+    {% for field in form if field.widget.input_type != 'hidden' %}
+
+    <div class="form-group row">
+        {{field.label(class="col-sm-2 col-form-label")}}
+        <div class="col-sm-10">
+            {{field(class="form-control")}}
+        </div>
+    </div>
+
+    {% endfor %}
+
+    <button class="btn btn-primary">Login!</button>
+</form>
+
+{% endblock %}
